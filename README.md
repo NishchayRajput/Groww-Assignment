@@ -68,7 +68,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the dashboard.
 - Loading states and error boundaries for better UX
 
 **API Implementation Note:**
-We utilized the **demo API key** to focus on implementation quality and clean architecture rather than spending time on API key validation issues. The demo API (5 calls/min, 500 calls/day) is sufficient for testing and demonstrates full integration capability that scales seamlessly with a production API key.
+We utilized the **demo API key** to focus on implementation quality and clean architecture rather than spending time on API key validation issues. The demo API (5 calls/min, 500 calls/day) is sufficient for testing and demonstrates full integration capability that scales seamlessly with a production API key. **For demo testing, use stock symbol `IBM` which is supported by the demo API.**
 
 ### 4. **User Experience Design** ⭐⭐⭐
 **Intuitive Interfaces for Non-Technical Users:**
@@ -240,7 +240,7 @@ className={widget.gridSpan === 2 ? 'md:col-span-2 lg:col-span-2' :
 ### Adding a Widget
 
 1. Click **"Add Widget"** button
-2. Enter stock symbol (e.g., `IBM`, `AAPL`, `MSFT`, `GOOGL`)
+2. Enter stock symbol - **⚠️ IMPORTANT: Use `IBM` for demo API** (The demo API has limited functionality. For other stock symbols like AAPL, MSFT, GOOGL, please configure your own API key from [Alpha Vantage](https://www.alphavantage.co/))
 3. Choose display format:
    - 📈 **Chart** - Interactive line chart with statistics
    - 📋 **Table** - Paginated OHLCV data (10 rows/page)
@@ -397,7 +397,8 @@ npm run start
 
 ## 📝 Implementation Notes
 
-- **Demo API**: Using Alpha Vantage demo API to focus on implementation quality and clean architecture. The demo API (5 calls/min, 500 calls/day) provides excellent testing capabilities and the integration seamlessly scales with a production API key replacement.
+- **Demo API**: Using Alpha Vantage demo API to focus on implementation quality and clean architecture. The demo API (5 calls/min, 500 calls/day) is limited to certain symbols like `IBM`. For full access to all stock symbols (AAPL, MSFT, GOOGL, NVDA, etc.), get your own free API key from [https://www.alphavantage.co/](https://www.alphavantage.co/) and replace `const API_KEY = 'demo'` in `components/chart-widget.tsx`.
+- **Recommended Test Symbol**: Use `IBM` for testing with the demo API
 - **Rate Limits**: Respected in auto-refresh design to prevent throttling
 - **Data Freshness**: Auto-refresh intervals optimized for API constraints
 - **Storage**: Widget state persists to browser localStorage (~5-10MB limit per domain)
